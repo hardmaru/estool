@@ -14,7 +14,7 @@ CMA-ES is wrapping around [pycma](https://github.com/CMA-ES/pycma).
 
 [A Visual Guide to Evolution Strategies](http://blog.otoro.net/2017/10/29/visual-evolution-strategies/)
 
-[Evolving Stable Strategies](http://blog.otoro.net/2017/11/09/evolving-stable-strategies/)
+[Evolving Stable Strategies](http://blog.otoro.net/2017/11/12/evolving-stable-strategies/)
 
 ## Using Evolution Strategies Library
 
@@ -49,7 +49,7 @@ while True:
 
 ## Parallel Processing Training with MPI
 
-Please read [Evolving Stable Strategies](http://blog.otoro.net/2017/11/09/evolving-stable-strategies/) article for more demos and use cases.
+Please read [Evolving Stable Strategies](http://blog.otoro.net/2017/11/12/evolving-stable-strategies/) article for more demos and use cases.
 
 To use the training tool (relies on MPI):
 
