@@ -65,7 +65,15 @@ after training, to run pre-trained models:
 python model.py bullet_ant log/name_of_your_json_file.json
 ```
 
-For example, to run a minitaur duck model, run this locally:
+<center>
+<!--<img src="{{ site.baseurl }}/assets/20171109/biped/bipedcover.gif" width="100%"/><br/>-->
+<!--<img src="{{ site.baseurl }}/assets/20171109/kuka/kuka.gif" width="100%"/><br/>-->
+<img src="https://cdn.rawgit.com/hardmaru/pybullet_animations/f6f7fcd7/anim/robo/bullet_ant_demo.gif" width="100%"/><br/>
+<i>bullet_ant pybullet environment. PEPG.</i><br/>
+</center>
+<p></p>
+
+Another example: to run a minitaur duck model, run this locally:
 
 ```
 python model.py bullet_minitaur_duck zoo/bullet_minitaur_duck.cma.256.json
@@ -74,10 +82,11 @@ python model.py bullet_minitaur_duck zoo/bullet_minitaur_duck.cma.256.json
 <center>
 <!--<img src="{{ site.baseurl }}/assets/20171109/biped/bipedcover.gif" width="100%"/><br/>-->
 <!--<img src="{{ site.baseurl }}/assets/20171109/kuka/kuka.gif" width="100%"/><br/>-->
-<img src="https://cdn.rawgit.com/hardmaru/pybullet_animations/f6f7fcd7/anim/robo/bullet_ant_demo.gif" width="50%"/><br/>
-<i>bullet_ant pybullet environment. PEPG.</i><br/>
+<img src="https://cdn.rawgit.com/hardmaru/pybullet_animations/f6f7fcd7/anim/minitaur/duck_normal_small.gif" width="100%"/><br/>
+<i>Custom Minitaur Env.</i><br/>
 </center>
 <p></p>
+
 
 In the .hist.json file, and on the screen output, we track the progress of training. The ordering of fields are:
 
