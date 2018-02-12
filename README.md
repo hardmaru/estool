@@ -30,7 +30,7 @@ while True:
   solutions = solver.ask()
 
   # create an array to hold the solutions.
-  # solverpopsize = population size
+  # solver.popsize = population size
   rewards = np.zeros(solver.popsize)
 
   # calculate the reward for each given solution
