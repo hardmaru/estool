@@ -33,7 +33,8 @@ while True:
   # solverpopsize = population size
   rewards = np.zeros(solver.popsize)
 
-  # calculate the reward for each given solution using our own method
+  # calculate the reward for each given solution
+  # using your own evaluate() method
   for i in range(solver.popsize):
     rewards[i] = evaluate(solutions[i])
 
