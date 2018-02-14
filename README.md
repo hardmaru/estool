@@ -55,12 +55,20 @@ Please read [Evolving Stable Strategies](http://blog.otoro.net/2017/11/12/evolvi
 To use the training tool (relies on MPI):
 
 ```
-python train.py bullet_ant -n 64 -t 4
+python train.py bullet_racecar -n 8 -t 4
 ```
 
-will launch training jobs with 256 workers (using 64 MPI processes). the best model will be saved as a .json file in log/
+will launch training jobs with 32 workers (using 8 MPI processes). the best model will be saved as a .json file in log/. This model should train in a few minutes on a 2014 MacBook Pro.
 
-after training, to run pre-trained models:
+If you have more compute and have access to a 64-core CPU machine, I recommend:
+
+```
+python train.py name_of_environment -e 16 -n 64 -t 4
+```
+
+This will calculate fitness values based on an average of 16 random runs, on 256 workers (64 MPI processes x 4). In my experience this works reasonably well for most tasks inside `config.py`.
+
+After training, to run pre-trained models:
 
 ```
 python model.py bullet_ant log/name_of_your_json_file.json
