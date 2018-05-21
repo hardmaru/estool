@@ -268,7 +268,7 @@ def evaluate_batch(model_params, max_len=-1):
   send_packets_to_slaves(packet_list)
   reward_list_total = receive_packets_from_slaves()
 
-  reward_list = reward_list_total[:, 0] # get rewards
+  reward_list = reward_list_total[:,0]/(reward_list_total[:,1]+1) # get rewards
   return np.mean(reward_list)
 
 def master():
@@ -314,7 +314,7 @@ def master():
     send_packets_to_slaves(packet_list)
     reward_list_total = receive_packets_from_slaves()
 
-    reward_list = reward_list_total[:, 0] # get rewards
+    reward_list = reward_list_total[:,0]/(reward_list_total[:,1]+1) # get rewards
 
     mean_time_step = int(np.mean(reward_list_total[:, 1])*100)/100. # get average time step
     max_time_step = int(np.max(reward_list_total[:, 1])*100)/100. # get average time step
