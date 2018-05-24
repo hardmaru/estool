@@ -197,7 +197,7 @@ class SimpleGA:
       l2_decay = compute_weight_decay(self.weight_decay, self.solutions)
       reward_table += l2_decay
 
-    if (not self.forget_best or self.first_iteration):
+    if self.forget_best or self.first_iteration:
       reward = reward_table
       solution = self.solutions
     else:
