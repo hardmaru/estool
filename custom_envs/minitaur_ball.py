@@ -155,7 +155,7 @@ class MinitaurBallBulletEnv(gym.Env):
     else:
       self._pybullet_client = bullet_client.BulletClient()
 
-    self.seed()
+    self._seed()
     self.reset()
     observation_high = (
         self.minitaur.GetObservationUpperBound() + OBSERVATION_EPS)
@@ -174,7 +174,7 @@ class MinitaurBallBulletEnv(gym.Env):
   def configure(self, args):
     self._args = args
 
-  def reset(self):
+  def _reset(self):
     if self._hard_reset:
       self._pybullet_client.resetSimulation()
       self._pybullet_client.setPhysicsEngineParameter(
@@ -220,7 +220,7 @@ class MinitaurBallBulletEnv(gym.Env):
         self._pybullet_client.stepSimulation()
     return self._noisy_observation()
 
-  def seed(self, seed=None):
+  def _seed(self, seed=None):
     self.np_random, seed = seeding.np_random(seed)
     return [seed]
 
@@ -234,7 +234,7 @@ class MinitaurBallBulletEnv(gym.Env):
       action = self.minitaur.ConvertFromLegModel(action)
     return action
 
-  def step(self, action):
+  def _step(self, action):
     """Step forward the simulation, given the action.
     Args:
       action: A list of desired motor angles for eight motors.
@@ -268,7 +268,7 @@ class MinitaurBallBulletEnv(gym.Env):
     done = self._termination()
     return np.array(self._noisy_observation()), reward, done, {}
 
-  def render(self, mode="rgb_array", close=False):
+  def _render(self, mode="rgb_array", close=False):
     if mode != "rgb_array":
       return np.array([])
     base_pos = self.minitaur.GetBasePosition()
