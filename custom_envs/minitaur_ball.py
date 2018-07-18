@@ -20,6 +20,7 @@ from pybullet_envs.bullet import bullet_client
 from pybullet_envs.bullet import minitaur
 import os
 import pybullet_data
+from pkg_resources import parse_version
 
 from pybullet_envs.bullet import minitaur_env_randomizer
 #from . import minitaur_env_randomizer
@@ -379,3 +380,9 @@ class MinitaurBallBulletEnv(gym.Env):
           scale=self._observation_noise_stdev, size=observation.shape) *
                       self.minitaur.GetObservationUpperBound())
     return observation
+
+  if parse_version(gym.__version__)>=parse_version('0.9.6'):
+    render = _render
+    reset = _reset
+    seed = _seed
+    step = _step
