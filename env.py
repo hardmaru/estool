@@ -12,6 +12,13 @@ def make_env(env_name, seed=-1, render_mode=False):
   if (env_name.startswith("RacecarBulletEnv")):
     print("bullet_racecar_started")
     env = racecarGymEnv.RacecarGymEnv(isDiscrete=False, renders=render_mode)
+  elif (env_name.startswith("BipedalWalker")):
+    if (env_name.startswith("BipedalWalkerHardcore")):
+      from box2d.biped import BipedalWalkerHardcore
+      env = BipedalWalkerHardcore()
+    else:
+      from box2d.biped import BipedalWalker
+      env = BipedalWalker()
   elif (env_name.startswith("MinitaurBulletEnv")):
     print("bullet_minitaur_started")
     env = minitaur_gym_env.MinitaurBulletEnv(render=render_mode)
