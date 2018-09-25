@@ -12,6 +12,9 @@ def make_env(env_name, seed=-1, render_mode=False):
   if (env_name.startswith("RacecarBulletEnv")):
     print("bullet_racecar_started")
     env = racecarGymEnv.RacecarGymEnv(isDiscrete=False, renders=render_mode)
+  elif (env_name.startswith("RocketLander")):
+    from box2d.rocket import RocketLander
+    env = RocketLander()
   elif (env_name.startswith("BipedalWalker")):
     if (env_name.startswith("BipedalWalkerHardcore")):
       from box2d.biped import BipedalWalkerHardcore

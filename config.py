@@ -226,6 +226,17 @@ biped = Game(env_name='BipedalWalker-v2',
 )
 games['biped'] = biped
 
+rocketlander = Game(env_name='RocketLander-v0',
+  input_size=8,
+  output_size=3,
+  time_factor=0,
+  layers=[32, 16],
+  activation='passthru',
+  noise_bias=0.0,
+  output_noise=[False, False, True],
+)
+games['rocketlander'] = rocketlander
+
 carracing = Game(env_name='CarRacing-v0',
   input_size=64,
   output_size=3,

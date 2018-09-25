@@ -313,14 +313,15 @@ def main():
     model.set_model_params(params)
 
   if final_mode:
-    total_reward = 0.0
     np.random.seed(the_seed)
     model.env.seed(the_seed)
+    rewards = []
 
     for i in range(100):
       reward, steps_taken = simulate(model, train_mode=False, render_mode=False, num_episode=1)
-      total_reward += reward[0]
-    print("seed", the_seed, "average_reward", total_reward/100)
+      print(i, reward)
+      rewards.append(reward[0])
+    print("seed", the_seed, "average_reward", np.mean(rewards), "standard_deviation", np.std(rewards))
   else:
     if record_video:
       model.env = Monitor(model.env, directory='/tmp/'+gamename,video_callable=lambda episode_id: True, write_upon_reset=True, force=True)
