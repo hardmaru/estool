@@ -28,6 +28,8 @@ from enum import Enum
 
 ### CONSTANTS ###
 
+ROCKET_DENSITY = 10.0
+
 """State array definitions"""
 class State(Enum):
     x = 0
@@ -548,7 +550,7 @@ class RocketLander(gym.Env):
             angle=0,
             fixtures=fixtureDef(
                 shape=polygonShape(vertices=[(x / SCALE, y / SCALE) for x, y in LANDER_POLY]),
-                density=5.0,
+                density=ROCKET_DENSITY,
                 friction=0.1,
                 categoryBits=0x0010,
                 maskBits=0x001,  # collide only with ground
