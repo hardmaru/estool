@@ -20,7 +20,7 @@ import gym
 from gym import spaces
 from gym.utils import seeding
 import logging
-import pyglet
+
 from itertools import chain
 import abc
 import sys, math
@@ -28,8 +28,8 @@ from enum import Enum
 
 ### CONSTANTS ###
 
-ROCKET_DENSITY = 8.0 # harder
-MAX_EPISODE_LENGTH = 1000
+ROCKET_DENSITY = 5.0
+MAX_EPISODE_LENGTH = 2000
 
 """State array definitions"""
 class State(Enum):
@@ -779,6 +779,7 @@ class RocketLander(gym.Env):
         if self.remaining_fuel < 0:
             self.remaining_fuel = 0
 
+    ''' # not used
     @staticmethod
     def _create_labels(labels):
         labels_dict = {}
@@ -788,6 +789,7 @@ class RocketLander(gym.Env):
                                                   anchor_x='right', anchor_y='center', color=(0, 255, 0, 255))
             y_spacing += 1
         return labels_dict
+    '''
 
     """ RENDERING """
 
