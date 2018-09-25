@@ -28,7 +28,8 @@ from enum import Enum
 
 ### CONSTANTS ###
 
-ROCKET_DENSITY = 10.0
+ROCKET_DENSITY = 8.0 # harder
+MAX_EPISODE_LENGTH = 1000
 
 """State array definitions"""
 class State(Enum):
@@ -198,6 +199,7 @@ class RocketLander(gym.Env):
         self.lander_tilt_angle_limit = THETA_LIMIT
 
         self.game_over = False
+        self.timer = 0
 
         self.settings = settings
         self.dynamicLabels = {}
@@ -219,6 +221,7 @@ class RocketLander(gym.Env):
     def _reset(self):
         self._destroy()
         self.game_over = False
+        self.timer = 0
         self.world.contactListener_keepref = ContactDetector(self)
         self.world.contactListener = self.world.contactListener_keepref
 
@@ -337,6 +340,10 @@ class RocketLander(gym.Env):
         if not self.lander.awake:
             done = True
             reward = +10
+
+        self.timer += 1
+        if self.timer >= MAX_EPISODE_LENGTH:
+          done = True
 
         self._update_particles()
 
@@ -1265,6 +1272,7 @@ if __name__ == "__main__":
     episode_number = 5
 
     for episode in range(episode_number):
+
         while (1):
 
             a = pid.pid_algorithm(s) # pass the state to the algorithm, get the actions
