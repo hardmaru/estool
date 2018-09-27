@@ -199,7 +199,12 @@ def simulate(model, train_mode=False, render_mode=True, num_episode=5, seed=-1, 
   reward_list = []
   t_list = []
 
+  is_biped = (model.env_name.find("BipedalWalker") >= 0)
+
   orig_mode = True  # hack for bipedhard's reward augmentation during training (set to false for hack)
+  if is_biped:
+    orig_mode = False
+
   dct_compress_mode = False
 
   max_episode_length = 3000
