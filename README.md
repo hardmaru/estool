@@ -10,6 +10,22 @@ Implementation of various Evolution Strategies, such as GA, PEPG, CMA-ES and Ope
 
 CMA-ES is wrapping around [pycma](https://github.com/CMA-ES/pycma).
 
+# Notes
+
+The tool last tested using the following configuration:
+
+- TensorFlow 1.8.0
+
+- NumPy 1.13.3 (1.14 has some annoying warning)
+
+- OpenAI Gym 0.9.4 (breaks for 1.0+ for doom)
+
+- cma 2.2.0, basically 2+ should work
+
+- Python 3, although 2 might work.
+
+- mpi4py 2
+
 ## Backround Reading:
 
 [A Visual Guide to Evolution Strategies](http://blog.otoro.net/2017/10/29/visual-evolution-strategies/)
