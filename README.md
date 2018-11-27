@@ -20,7 +20,9 @@ The tool last tested using the following configuration:
 
 - OpenAI Gym 0.9.4 (breaks for 1.0+ for doom)
 
-- cma 2.2.0, basically 2+ should work
+- cma 2.2.0, basically 2+ should work.
+
+- PyBullet 1.6.3 (possible that newer versions might work, but have not tested).
 
 - Python 3, although 2 might work.
 
