@@ -4,6 +4,16 @@ Game = namedtuple('Game', ['env_name', 'time_factor', 'input_size', 'output_size
 
 games = {}
 
+cartpole_swingup = Game(env_name='CartPoleSwingUp',
+  input_size=5,
+  output_size=1,
+  time_factor=0,
+  layers=[25, 5],
+  activation='tanh',
+  noise_bias=0.0,
+  output_noise=[False, False, False],
+)
+games['cartpole_swingup'] = cartpole_swingup
 
 bullet_pendulum = Game(env_name='InvertedPendulumSwingupBulletEnv-v0',
   input_size=5,

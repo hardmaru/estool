@@ -14,8 +14,6 @@ CMA-ES is wrapping around [pycma](https://github.com/CMA-ES/pycma).
 
 The tool last tested using the following configuration:
 
-- TensorFlow 1.8.0
-
 - NumPy 1.13.3 (1.14 has some annoying warning).
 
 - OpenAI Gym 0.9.4 (breaks for 1.0+ since they changed the API).
@@ -90,6 +88,20 @@ After training, to run pre-trained models:
 
 ```
 python model.py bullet_ant log/name_of_your_json_file.json
+```
+
+If you don't want to install a physics engine, try it on the `cartpole_swingup` task that doesn't have any dependencies:
+
+Training command:
+
+```
+python train.py cartpole_swingup -n 8 -e 1 -t 8 --sigma_init 1.0
+```
+
+After 300-400 generations, the final score should be > 900. You can run it with this command:
+
+```
+python model.py cartpole_swingup log/cartpole_swingup.cma.1.64.best.json
 ```
 
 <center>
