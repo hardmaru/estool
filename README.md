@@ -1,7 +1,7 @@
 # ESTool
 
 <center>
-<img src="https://cdn.rawgit.com/hardmaru/pybullet_animations/f6f7fcd7/anim/biped/biped_cma.gif" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/hardmaru/pybullet_animations@f6f7fcd72ded6b1772b1b21462dff69e93f94520/anim/biped/biped_cma.gif" width="100%"/>
 <i>Evolved Biped Walker.</i><br/>
 </center>
 <p></p>
@@ -90,6 +90,8 @@ After training, to run pre-trained models:
 python model.py bullet_ant log/name_of_your_json_file.json
 ```
 
+### Self-Contained Cartpole Swingup Task
+
 If you don't want to install a physics engine, try it on the `cartpole_swingup` task that doesn't have any dependencies:
 
 Training command:
@@ -104,10 +106,12 @@ After 300-400 generations, the final score should be > 900. You can run it with 
 python model.py cartpole_swingup log/cartpole_swingup.cma.1.64.best.json
 ```
 
+### PyBullet Envs
+
 <center>
 <!--<img src="{{ site.baseurl }}/assets/20171109/biped/bipedcover.gif" width="100%"/><br/>-->
 <!--<img src="{{ site.baseurl }}/assets/20171109/kuka/kuka.gif" width="100%"/><br/>-->
-<img src="https://cdn.rawgit.com/hardmaru/pybullet_animations/f6f7fcd7/anim/robo/bullet_ant_demo.gif" width="50%"/><br/>
+<img src="https://cdn.jsdelivr.net/gh/hardmaru/pybullet_animations@f6f7fcd72ded6b1772b1b21462dff69e93f94520/anim/robo/bullet_ant_demo.gif" width="50%"/><br/>
 <i>bullet_ant pybullet environment. PEPG.</i><br/>
 </center>
 <p></p>
@@ -121,7 +125,7 @@ python model.py bullet_minitaur_duck zoo/bullet_minitaur_duck.cma.256.json
 <center>
 <!--<img src="{{ site.baseurl }}/assets/20171109/biped/bipedcover.gif" width="100%"/><br/>-->
 <!--<img src="{{ site.baseurl }}/assets/20171109/kuka/kuka.gif" width="100%"/><br/>-->
-<img src="https://cdn.rawgit.com/hardmaru/pybullet_animations/8a6ccaf5/anim/minitaur/duck_normal_small.gif" width="100%"/><br/>
+<img src="https://cdn.jsdelivr.net/gh/hardmaru/pybullet_animations@8a6ccaf53456f6fa9e85e258e10f9fa917261571/anim/minitaur/duck_normal_small.gif" width="100%"/><br/>
 <i>Custom Minitaur Env.</i><br/>
 </center>
 <p></p>
@@ -141,7 +145,7 @@ In the .hist.json file, and on the screen output, we track the progress of train
 Using `plot_training_progress.ipynb` in an IPython notebook, you can plot the traning logs for the `.hist.json` files. For example, in the `bullet_ant` task:
 
 <center>
-<img src="https://cdn.rawgit.com/hardmaru/pybullet_animations/5a3847d0/svg/bullet_ant.svg" width="100%"/><br/>
+<img src="https://cdn.jsdelivr.net/gh/hardmaru/pybullet_animations@5a3847d0bd8407781dc931fdff2fc80f0315ab20/svg/bullet_ant.svg" width="100%"/><br/>
 <i>Bullet Ant training progress.</i><br/>
 </center>
 <p></p>
