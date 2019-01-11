@@ -4,6 +4,8 @@ https://github.com/zuoxingdong/DeepPILCO/blob/master/cartpole_swingup.py
 
 Modified so that done=True when x is outside of -2.4 to 2.4
 Reward is also reshaped to be similar to PyBullet/roboschool version
+
+More difficult, since dt is 0.05 (not 0.01), and only 200 timesteps
 """
 
 import logging
@@ -29,14 +31,11 @@ class CartPoleSwingUpEnv(gym.Env):
         self.l = 0.6 # pole's length
         self.m_p_l = (self.m_p*self.l)
         self.force_mag = 10.0
-        self.dt = 0.01  # seconds between state updates
+        self.dt = 0.05  # seconds between state updates
         self.b = 0.1  # friction coefficient
 
         self.t = 0 # timestep
-        self.t_limit = 1000
-        self.hist_size = 100
-        self.hist_index = 0
-        self.hist_score = np.zeros(self.hist_size)
+        self.t_limit = 200
 
         # Angle at which to fail the episode
         self.theta_threshold_radians = 12 * 2 * math.pi / 360
@@ -100,8 +99,6 @@ class CartPoleSwingUpEnv(gym.Env):
         self.state = np.random.normal(loc=np.array([0.0, 0.0, np.pi, 0.0]), scale=np.array([0.2, 0.2, 0.2, 0.2]))
         self.steps_beyond_done = None
         self.t = 0 # timestep
-        self.hist_index = 0
-        self.hist_score = np.zeros(self.hist_size)
         x, x_dot, theta, theta_dot = self.state
         obs = np.array([x,x_dot,np.cos(theta),np.sin(theta),theta_dot])
         return obs
