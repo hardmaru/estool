@@ -321,9 +321,7 @@ def main():
     rewards = []
 
     for i in range(100):
-      np.random.seed(the_seed+i)
-      model.env.seed(the_seed+i)
-      reward, steps_taken = simulate(model, train_mode=False, render_mode=False, num_episode=1)
+      reward, steps_taken = simulate(model, train_mode=False, render_mode=False, num_episode=1, seed=the_seed+i)
       print(i, reward)
       rewards.append(reward[0])
     print("seed", the_seed, "average_reward", np.mean(rewards), "standard_deviation", np.std(rewards))
@@ -331,12 +329,9 @@ def main():
     if record_video:
       model.env = Monitor(model.env, directory='/tmp/'+gamename,video_callable=lambda episode_id: True, write_upon_reset=True, force=True)
     for i in range(5):
-      np.random.seed(the_seed+i)
-      model.env.seed(the_seed+i)
       reward, steps_taken = simulate(model,
-        train_mode=False, render_mode=render_mode, num_episode=1)
+        train_mode=False, render_mode=render_mode, num_episode=1, seed=the_seed+i)
       print ("terminal reward", reward, "average steps taken", np.mean(steps_taken)+1)
-      #break
 
 if __name__ == "__main__":
   main()
