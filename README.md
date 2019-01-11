@@ -92,6 +92,11 @@ python model.py bullet_ant log/name_of_your_json_file.json
 
 ### Self-Contained Cartpole Swingup Task
 
+<center>
+<img https://rawcdn.githack.com/hardmaru/estool/6cf3b91a0bd840286002884b6a3fa56887ca7e2c/img/cartpole_swingup.gif width="50%"/><br/>
+</center>
+<p></p>
+
 If you don't want to install a physics engine, try it on the `cartpole_swingup` task that doesn't have any dependencies:
 
 Training command:
