@@ -16,7 +16,7 @@ The tool last tested using the following configuration:
 
 - NumPy 1.13.3 (1.14 has some annoying warning).
 
-- OpenAI Gym 0.9.4 (breaks for 1.0+ since they changed the API).
+- OpenAI Gym 0.9.4 (breaks for 0.10.0+ since they changed the API).
 
 - cma 2.2.0, basically 2+ should work.
 
