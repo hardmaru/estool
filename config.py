@@ -15,6 +15,18 @@ cartpole_swingup = Game(env_name='CartPoleSwingUp',
 )
 games['cartpole_swingup'] = cartpole_swingup
 
+# version of cartpole with no velocity information
+cartpole_swingup_hardcore = Game(env_name='CartPoleSwingUpHardcore',
+  input_size=3,
+  output_size=1,
+  time_factor=0,
+  layers=[25, 5],
+  activation='tanh',
+  noise_bias=0.0,
+  output_noise=[False, False, False],
+)
+games['cartpole_swingup_hardcore'] = cartpole_swingup_hardcore
+
 bullet_pendulum = Game(env_name='InvertedPendulumSwingupBulletEnv-v0',
   input_size=5,
   output_size=1,

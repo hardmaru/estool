@@ -23,7 +23,7 @@ class CartPoleSwingUpEnv(gym.Env):
         'video.frames_per_second' : 50
     }
 
-    def __init__(self):
+    def __init__(self, hardcore=False):
         self.g = 9.82  # gravity
         self.m_c = 0.5  # cart mass
         self.m_p = 0.5  # pendulum mass
@@ -41,9 +41,18 @@ class CartPoleSwingUpEnv(gym.Env):
         self.theta_threshold_radians = 12 * 2 * math.pi / 360
         self.x_threshold = 2.4
 
+        self.hardcore = hardcore # if hardcore, then no velocity information given
+
         high = np.array([
             np.finfo(np.float32).max,
             np.finfo(np.float32).max,
+            np.finfo(np.float32).max,
+            np.finfo(np.float32).max,
+            np.finfo(np.float32).max])
+
+
+        if self.hardcore:
+          high = np.array([
             np.finfo(np.float32).max,
             np.finfo(np.float32).max,
             np.finfo(np.float32).max])
@@ -81,7 +90,7 @@ class CartPoleSwingUpEnv(gym.Env):
 
         done = False
         if  x < -self.x_threshold or x > self.x_threshold:
-          done = True
+            done = True
 
         self.t += 1
 
@@ -90,7 +99,12 @@ class CartPoleSwingUpEnv(gym.Env):
 
         reward = (np.cos(theta)+1.0)/2.0
 
-        obs = np.array([x,x_dot,np.cos(theta),np.sin(theta),theta_dot])
+        c = np.cos(theta)
+        s = np.sin(theta)
+        if self.hardcore:
+            obs = np.array([x,c,s])
+        else:
+            obs = np.array([x,x_dot,c,s,theta_dot])
 
         return obs, reward, done, {}
 
@@ -100,7 +114,12 @@ class CartPoleSwingUpEnv(gym.Env):
         self.steps_beyond_done = None
         self.t = 0 # timestep
         x, x_dot, theta, theta_dot = self.state
-        obs = np.array([x,x_dot,np.cos(theta),np.sin(theta),theta_dot])
+        c = np.cos(theta)
+        s = np.sin(theta)
+        if self.hardcore:
+            obs = np.array([x,c,s])
+        else:
+            obs = np.array([x,x_dot,c,s,theta_dot])
         return obs
 
     def _render(self, mode='human', close=False):

@@ -107,7 +107,7 @@ python train.py cartpole_swingup -n 8 -e 1 -t 8 --sigma_init 1.0
 After 400 generations, the final average score (over 64 trials) should be around 185. You can run it with this command:
 
 ```
-python model.py cartpole_swingup log/cartpole_swingup.cma.1.64.best.json
+python model.py cartpole_swingup zoo/cartpole_swingup.cma.1.64.best.json
 ```
 
 ### PyBullet Envs
