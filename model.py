@@ -11,6 +11,8 @@ import time
 
 from gym.wrappers import Monitor
 
+from nn import sigmoid, relu, passthru, softmax, sample, RNNModel
+
 final_mode = False
 render_mode = True
 RENDER_DELAY = False
@@ -45,26 +47,11 @@ def decompress_1d(c, shape, axis=0):
 
 def make_model(game):
   # can be extended in the future.
-  model = Model(game)
+  if game.rnn_mode:
+    model = RNNModel(game)
+  else:
+    model = Model(game)
   return model
-
-def sigmoid(x):
-  return 1 / (1 + np.exp(-x))
-
-def relu(x):
-  return np.maximum(x, 0)
-
-def passthru(x):
-  return x
-
-# useful for discrete actions
-def softmax(x):
-  e_x = np.exp(x - np.max(x))
-  return e_x / e_x.sum(axis=0)
-
-# useful for discrete actions
-def sample(p):
-  return np.argmax(np.random.multinomial(1, p))
 
 class Model:
   ''' simple feedforward model '''
@@ -82,9 +69,15 @@ class Model:
       self.time_input = 1
     self.input_size = game.input_size
     self.output_size = game.output_size
-    self.shapes = [ (self.input_size + self.time_input, self.layer_1),
-                    (self.layer_1, self.layer_2),
-                    (self.layer_2, self.output_size)]
+    if self.layer_2 > 0:
+      self.shapes = [ (self.input_size + self.time_input, self.layer_1),
+                      (self.layer_1, self.layer_2),
+                      (self.layer_2, self.output_size)]
+    elif self.layer_2 == 0:
+      self.shapes = [ (self.input_size + self.time_input, self.layer_1),
+                      (self.layer_1, self.output_size)]
+    else:
+      assert False, "invalid layer_2"
 
     self.sample_output = False
     if game.activation == 'relu':
@@ -242,8 +235,7 @@ def simulate(model, train_mode=False, render_mode=True, num_episode=5, seed=-1, 
           time.sleep(0.01)
 
       if model.rnn_mode:
-        model.update(obs, t)
-        action = model.get_action()
+        action = model.get_action(obs)
       else:
         if MEAN_MODE:
           action = model.get_action(obs, t=t, mean_mode=(not train_mode))

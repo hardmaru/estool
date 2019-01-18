@@ -23,7 +23,7 @@ class CartPoleSwingUpEnv(gym.Env):
         'video.frames_per_second' : 50
     }
 
-    def __init__(self, hardcore=False):
+    def __init__(self, hard=False):
         self.g = 9.82  # gravity
         self.m_c = 0.5  # cart mass
         self.m_p = 0.5  # pendulum mass
@@ -41,7 +41,7 @@ class CartPoleSwingUpEnv(gym.Env):
         self.theta_threshold_radians = 12 * 2 * math.pi / 360
         self.x_threshold = 2.4
 
-        self.hardcore = hardcore # if hardcore, then no velocity information given
+        self.hard = hard # if hard mode, then no velocity information given
 
         high = np.array([
             np.finfo(np.float32).max,
@@ -51,7 +51,7 @@ class CartPoleSwingUpEnv(gym.Env):
             np.finfo(np.float32).max])
 
 
-        if self.hardcore:
+        if self.hard:
           high = np.array([
             np.finfo(np.float32).max,
             np.finfo(np.float32).max,
@@ -101,7 +101,7 @@ class CartPoleSwingUpEnv(gym.Env):
 
         c = np.cos(theta)
         s = np.sin(theta)
-        if self.hardcore:
+        if self.hard:
             obs = np.array([x,c,s])
         else:
             obs = np.array([x,x_dot,c,s,theta_dot])
@@ -116,7 +116,7 @@ class CartPoleSwingUpEnv(gym.Env):
         x, x_dot, theta, theta_dot = self.state
         c = np.cos(theta)
         s = np.sin(theta)
-        if self.hardcore:
+        if self.hard:
             obs = np.array([x,c,s])
         else:
             obs = np.array([x,x_dot,c,s,theta_dot])
