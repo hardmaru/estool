@@ -101,13 +101,13 @@ If you don't want to install a physics engine, try it on the `cartpole_swingup` 
 Training command:
 
 ```
-python train.py cartpole_swingup -n 8 -e 1 -t 8 --sigma_init 1.0
+python train.py cartpole_swingup -n 8 -e 1 -t 4 --sigma_init 1.0
 ```
 
-After 400 generations, the final average score (over 64 trials) should be around 185. You can run it with this command:
+After 400 generations, the final average score (over 32 trials) should be around 185. You can run it with this command:
 
 ```
-python model.py cartpole_swingup zoo/cartpole_swingup.cma.1.64.best.json
+python model.py cartpole_swingup zoo/cartpole_swingup.cma.1.32.best.json
 ```
 
 ### PyBullet Envs
