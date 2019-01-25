@@ -81,7 +81,7 @@ class RNNModel:
 
     self.render_mode = False
 
-    self.shapes = [ (self.input_size + self.output_size + self.hidden_size, 1*self.hidden_size), # RNN weights
+    self.shapes = [ (self.input_size + self.hidden_size, 1*self.hidden_size), # RNN weights
                     (self.input_size + self.hidden_size, self.layer_1),# predict actions output
                     (self.layer_1, self.output_size)] # predict actions output
 
@@ -111,15 +111,17 @@ class RNNModel:
 
   def get_action(self, real_obs):
     obs = real_obs.reshape(1, 3)
-    total_obs = np.concatenate([obs, self.h], axis=1)
-
-    # calculate action using linear layer from output
-    hidden = np.tanh(np.matmul(total_obs, self.weight[1]) + self.bias[1])
-    action = np.tanh(np.matmul(hidden, self.weight[2]) + self.bias[2])
 
     # update rnn:
-    update_obs = np.concatenate([obs, action], axis=1)
-    self.h = self.rnn(update_obs, self.h)
+    #update_obs = np.concatenate([obs, action], axis=1)
+    self.h = self.rnn(obs, self.h)
+
+    # get action
+    total_obs = np.concatenate([obs, self.h], axis=1)
+
+    # calculate action using 2 layer network from output
+    hidden = np.tanh(np.matmul(total_obs, self.weight[1]) + self.bias[1])
+    action = np.tanh(np.matmul(hidden, self.weight[2]) + self.bias[2])
 
     return action[0]
 
