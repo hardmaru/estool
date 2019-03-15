@@ -104,10 +104,16 @@ Training command:
 python train.py cartpole_swingup -n 8 -e 1 -t 4 --sigma_init 1.0
 ```
 
-After 400 generations, the final average score (over 32 trials) should be around 185. You can run it with this command:
+After 400 generations, the final average score (over 32 trials) should be over 900. You can run it with this command:
 
 ```
-python model.py cartpole_swingup zoo/cartpole_swingup.cma.1.32.best.json
+python model.py cartpole_swingup log/cartpole_swingup.cma.1.32.best.json
+```
+
+If you haven't bothered to run the previous training command, you can load the pre-trained version:
+
+```
+python model.py cartpole_swingup zoo/cartpole_swingup.cma.json
 ```
 
 ### PyBullet Envs

@@ -34,8 +34,7 @@ def make_env(env_name, seed=-1, render_mode=False):
   elif (env_name.startswith("CartPoleSwingUp")):
     print("cartpole_swingup_started")
     from custom_envs.cartpole_swingup import CartPoleSwingUpEnv
-    hard = env_name.startswith("CartPoleSwingUpHard")
-    env = CartPoleSwingUpEnv(hard=hard)
+    env = CartPoleSwingUpEnv()
   elif (env_name.startswith("KukaBulletEnv")):
     print("bullet_kuka_grasping started")
     env = kukaGymEnv.KukaGymEnv(renders=render_mode,isDiscrete=False)

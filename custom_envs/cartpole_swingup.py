@@ -23,7 +23,7 @@ class CartPoleSwingUpEnv(gym.Env):
         'video.frames_per_second' : 50
     }
 
-    def __init__(self, hard=False):
+    def __init__(self):
         self.g = 9.82  # gravity
         self.m_c = 0.5  # cart mass
         self.m_p = 0.5  # pendulum mass
@@ -31,28 +31,19 @@ class CartPoleSwingUpEnv(gym.Env):
         self.l = 0.6 # pole's length
         self.m_p_l = (self.m_p*self.l)
         self.force_mag = 10.0
-        self.dt = 0.05  # seconds between state updates
+        self.dt = 0.01  # seconds between state updates
         self.b = 0.1  # friction coefficient
 
         self.t = 0 # timestep
-        self.t_limit = 200
+        self.t_limit = 1000
 
         # Angle at which to fail the episode
         self.theta_threshold_radians = 12 * 2 * math.pi / 360
         self.x_threshold = 2.4
 
-        self.hard = hard # if hard mode, then no velocity information given
-
         high = np.array([
             np.finfo(np.float32).max,
             np.finfo(np.float32).max,
-            np.finfo(np.float32).max,
-            np.finfo(np.float32).max,
-            np.finfo(np.float32).max])
-
-
-        if self.hard:
-          high = np.array([
             np.finfo(np.float32).max,
             np.finfo(np.float32).max,
             np.finfo(np.float32).max])
@@ -90,21 +81,19 @@ class CartPoleSwingUpEnv(gym.Env):
 
         done = False
         if  x < -self.x_threshold or x > self.x_threshold:
-            done = True
+          done = True
 
         self.t += 1
 
         if self.t >= self.t_limit:
           done = True
 
-        reward = (np.cos(theta)+1.0)/2.0
+        reward_theta = (np.cos(theta)+1.0)/2.0
+        reward_x = np.cos((x/self.x_threshold)*(np.pi/2.0))
 
-        c = np.cos(theta)
-        s = np.sin(theta)
-        if self.hard:
-            obs = np.array([x,c,s])
-        else:
-            obs = np.array([x,x_dot,c,s,theta_dot])
+        reward = reward_theta*reward_x
+
+        obs = np.array([x,x_dot,np.cos(theta),np.sin(theta),theta_dot])
 
         return obs, reward, done, {}
 
@@ -114,12 +103,7 @@ class CartPoleSwingUpEnv(gym.Env):
         self.steps_beyond_done = None
         self.t = 0 # timestep
         x, x_dot, theta, theta_dot = self.state
-        c = np.cos(theta)
-        s = np.sin(theta)
-        if self.hard:
-            obs = np.array([x,c,s])
-        else:
-            obs = np.array([x,x_dot,c,s,theta_dot])
+        obs = np.array([x,x_dot,np.cos(theta),np.sin(theta),theta_dot])
         return obs
 
     def _render(self, mode='human', close=False):
