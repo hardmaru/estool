@@ -174,4 +174,16 @@ python setup.py install
 ```
 Modify the train.py script and replace mpirun with mpiexec and -np with -n
 
+### Citation
 
+If you find this work useful, please cite it as:
+
+```
+@article{ha2017evolving,
+  title   = "Evolving Stable Strategies",
+  author  = "Ha, David",
+  journal = "blog.otoro.net",
+  year    = "2017",
+  url     = "http://blog.otoro.net/2017/11/12/evolving-stable-strategies/"
+}
+```
