@@ -6,7 +6,7 @@
 </center>
 <p></p>
 
-Implementation of various Evolution Strategies, such as GA, PEPG, CMA-ES and OpenAI's ES using common interface.
+Implementation of various Evolution Strategies, such as GA, Population-based REINFORCE (Section 6 of [Williams 1992](http://www-anw.cs.umass.edu/~barto/courses/cs687/williams92simple.pdf)), CMA-ES and OpenAI's ES using common interface.
 
 CMA-ES is wrapping around [pycma](https://github.com/CMA-ES/pycma).
 
@@ -122,7 +122,7 @@ python model.py cartpole_swingup zoo/cartpole_swingup.cma.json
 <!--<img src="{{ site.baseurl }}/assets/20171109/biped/bipedcover.gif" width="100%"/><br/>-->
 <!--<img src="{{ site.baseurl }}/assets/20171109/kuka/kuka.gif" width="100%"/><br/>-->
 <img src="https://cdn.jsdelivr.net/gh/hardmaru/pybullet_animations@f6f7fcd72ded6b1772b1b21462dff69e93f94520/anim/robo/bullet_ant_demo.gif" width="50%"/><br/>
-<i>bullet_ant pybullet environment. PEPG.</i><br/>
+<i>bullet_ant pybullet environment. Population-based REINFORCE.</i><br/>
 </center>
 <p></p>
 
