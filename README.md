@@ -6,7 +6,7 @@
 </center>
 <p></p>
 
-Implementation of various Evolution Strategies, such as GA, PEPG, CMA-ES and OpenAI's ES using common interface.
+Implementation of various Evolution Strategies, such as GA, Population-based REINFORCE (Section 6 of [Williams 1992](http://www-anw.cs.umass.edu/~barto/courses/cs687/williams92simple.pdf)), CMA-ES and OpenAI's ES using common interface.
 
 CMA-ES is wrapping around [pycma](https://github.com/CMA-ES/pycma).
 
@@ -101,13 +101,19 @@ If you don't want to install a physics engine, try it on the `cartpole_swingup` 
 Training command:
 
 ```
-python train.py cartpole_swingup -n 8 -e 1 -t 8 --sigma_init 1.0
+python train.py cartpole_swingup -n 8 -e 1 -t 4 --sigma_init 1.0
 ```
 
-After 400 generations, the final average score (over 64 trials) should be around 185. You can run it with this command:
+After 400 generations, the final average score (over 32 trials) should be over 900. You can run it with this command:
 
 ```
-python model.py cartpole_swingup log/cartpole_swingup.cma.1.64.best.json
+python model.py cartpole_swingup log/cartpole_swingup.cma.1.32.best.json
+```
+
+If you haven't bothered to run the previous training command, you can load the pre-trained version:
+
+```
+python model.py cartpole_swingup zoo/cartpole_swingup.cma.json
 ```
 
 ### PyBullet Envs
@@ -116,7 +122,7 @@ python model.py cartpole_swingup log/cartpole_swingup.cma.1.64.best.json
 <!--<img src="{{ site.baseurl }}/assets/20171109/biped/bipedcover.gif" width="100%"/><br/>-->
 <!--<img src="{{ site.baseurl }}/assets/20171109/kuka/kuka.gif" width="100%"/><br/>-->
 <img src="https://cdn.jsdelivr.net/gh/hardmaru/pybullet_animations@f6f7fcd72ded6b1772b1b21462dff69e93f94520/anim/robo/bullet_ant_demo.gif" width="50%"/><br/>
-<i>bullet_ant pybullet environment. PEPG.</i><br/>
+<i>bullet_ant pybullet environment. Population-based REINFORCE.</i><br/>
 </center>
 <p></p>
 
@@ -168,4 +174,16 @@ python setup.py install
 ```
 Modify the train.py script and replace mpirun with mpiexec and -np with -n
 
+### Citation
 
+If you find this work useful, please cite it as:
+
+```
+@article{ha2017evolving,
+  title   = "Evolving Stable Strategies",
+  author  = "Ha, David",
+  journal = "blog.otoro.net",
+  year    = "2017",
+  url     = "http://blog.otoro.net/2017/11/12/evolving-stable-strategies/"
+}
+```

@@ -31,11 +31,11 @@ class CartPoleSwingUpEnv(gym.Env):
         self.l = 0.6 # pole's length
         self.m_p_l = (self.m_p*self.l)
         self.force_mag = 10.0
-        self.dt = 0.05  # seconds between state updates
+        self.dt = 0.01  # seconds between state updates
         self.b = 0.1  # friction coefficient
 
         self.t = 0 # timestep
-        self.t_limit = 200
+        self.t_limit = 1000
 
         # Angle at which to fail the episode
         self.theta_threshold_radians = 12 * 2 * math.pi / 360
@@ -88,7 +88,10 @@ class CartPoleSwingUpEnv(gym.Env):
         if self.t >= self.t_limit:
           done = True
 
-        reward = (np.cos(theta)+1.0)/2.0
+        reward_theta = (np.cos(theta)+1.0)/2.0
+        reward_x = np.cos((x/self.x_threshold)*(np.pi/2.0))
+
+        reward = reward_theta*reward_x
 
         obs = np.array([x,x_dot,np.cos(theta),np.sin(theta),theta_dot])
 

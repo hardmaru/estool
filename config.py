@@ -1,6 +1,6 @@
 from collections import namedtuple
 
-Game = namedtuple('Game', ['env_name', 'time_factor', 'input_size', 'output_size', 'layers', 'activation', 'noise_bias', 'output_noise'])
+Game = namedtuple('Game', ['env_name', 'time_factor', 'input_size', 'output_size', 'layers', 'activation', 'noise_bias', 'output_noise', 'rnn_mode'])
 
 games = {}
 
@@ -8,10 +8,11 @@ cartpole_swingup = Game(env_name='CartPoleSwingUp',
   input_size=5,
   output_size=1,
   time_factor=0,
-  layers=[25, 5],
+  layers=[10, 0],
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['cartpole_swingup'] = cartpole_swingup
 
@@ -35,6 +36,7 @@ bullet_pendulum = Game(env_name='InvertedPendulumSwingupBulletEnv-v0',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['bullet_pendulum'] = bullet_pendulum
 
@@ -46,6 +48,7 @@ bullet_double_pendulum = Game(env_name='InvertedDoublePendulumBulletEnv-v0',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['bullet_double_pendulum'] = bullet_double_pendulum
 
@@ -57,6 +60,7 @@ bullet_minitaur_duck = Game(env_name='MinitaurDuckBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['bullet_minitaur_duck'] = bullet_minitaur_duck
 
@@ -68,6 +72,7 @@ bullet_minitaur_duck = Game(env_name='MinitaurDuckBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['bullet_minitaur_duck'] = bullet_minitaur_duck
 
@@ -79,6 +84,7 @@ bullet_kuka_grasping = Game(env_name='KukaBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['bullet_kuka_grasping'] = bullet_kuka_grasping
 
@@ -90,6 +96,7 @@ bullet_kuka_grasping_stoc = Game(env_name='KukaBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['bullet_kuka_grasping_stoc'] = bullet_kuka_grasping_stoc
 
@@ -101,6 +108,7 @@ bullet_minitaur_duck_stoc = Game(env_name='MinitaurDuckBulletEnv-v0',
   activation='tanh',
   noise_bias=-1.0,
   output_noise=[True, True, True],
+  rnn_mode=False,
 )
 games['bullet_minitaur_duck_stoc'] = bullet_minitaur_duck_stoc
 
@@ -112,6 +120,7 @@ bullet_minitaur_ball = Game(env_name='MinitaurBallBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['bullet_minitaur_ball'] = bullet_minitaur_ball
 
@@ -123,6 +132,7 @@ bullet_minitaur_ball_stoc = Game(env_name='MinitaurBallBulletEnv-v0',
   activation='tanh',
   noise_bias=-1.0,
   output_noise=[True, True, True],
+  rnn_mode=False,
 )
 games['bullet_minitaur_ball_stoc'] = bullet_minitaur_ball_stoc
 
@@ -134,6 +144,7 @@ bullet_half_cheetah = Game(env_name='HalfCheetahBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['bullet_half_cheetah'] = bullet_half_cheetah
 
@@ -146,6 +157,7 @@ bullet_humanoid = Game(env_name='HumanoidBulletEnv-v0',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['bullet_humanoid'] = bullet_humanoid
 
@@ -157,6 +169,7 @@ bullet_ant = Game(env_name='AntBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['bullet_ant'] = bullet_ant
 
@@ -168,6 +181,7 @@ bullet_walker = Game(env_name='Walker2DBulletEnv-v0',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['bullet_walker'] = bullet_walker
 
@@ -179,6 +193,7 @@ bullet_hopper = Game(env_name='HopperBulletEnv-v0',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['bullet_hopper'] = bullet_hopper
 
@@ -190,6 +205,7 @@ bullet_racecar = Game(env_name='RacecarBulletEnv-v0',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['bullet_racecar'] = bullet_racecar
 
@@ -201,6 +217,7 @@ bullet_minitaur = Game(env_name='MinitaurBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['bullet_minitaur'] = bullet_minitaur
 
@@ -212,6 +229,7 @@ bullet_minitaur_stoc = Game(env_name='MinitaurBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[True, True, True],
+  rnn_mode=False,
 )
 games['bullet_minitaur_stoc'] = bullet_minitaur_stoc
 
@@ -223,6 +241,7 @@ bipedhard_stoc = Game(env_name='BipedalWalkerHardcore-v2',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[True, True, True],
+  rnn_mode=False,
 )
 games['bipedhard_stoc'] = bipedhard_stoc
 
@@ -234,6 +253,7 @@ bipedhard = Game(env_name='BipedalWalkerHardcore-v2',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['bipedhard'] = bipedhard
 
@@ -245,6 +265,7 @@ biped = Game(env_name='BipedalWalker-v2',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, False],
+  rnn_mode=False,
 )
 games['biped'] = biped
 
@@ -256,6 +277,7 @@ rocketlander = Game(env_name='RocketLander-v0',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['rocketlander'] = rocketlander
 
@@ -267,6 +289,7 @@ carracing = Game(env_name='CarRacing-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['carracing'] = carracing
 
@@ -278,6 +301,7 @@ osimrun = Game(env_name='osimrun',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['osimrun'] = osimrun
 
@@ -289,6 +313,7 @@ robo_reacher = Game(env_name='RoboschoolReacher-v1',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['robo_reacher'] = robo_reacher
 
@@ -300,6 +325,7 @@ robo_flagrun = Game(env_name='RoboschoolHumanoidFlagrunHarder-v1',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['robo_flagrun'] = robo_flagrun
 
@@ -311,6 +337,7 @@ robo_pendulum = Game(env_name='RoboschoolInvertedPendulumSwingup-v1',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['robo_pendulum'] = robo_pendulum
 
@@ -322,6 +349,7 @@ robo_double_pendulum = Game(env_name='RoboschoolInvertedDoublePendulum-v1',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['robo_double_pendulum'] = robo_double_pendulum
 
@@ -333,6 +361,7 @@ robo_humanoid = Game(env_name='RoboschoolHumanoid-v1',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['robo_humanoid'] = robo_humanoid
 
@@ -344,6 +373,7 @@ robo_ant = Game(env_name='RoboschoolAnt-v1',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['robo_ant'] = robo_ant
 
@@ -355,6 +385,7 @@ robo_walker= Game(env_name='RoboschoolWalker2d-v1',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['robo_walker'] = robo_walker
 
@@ -366,5 +397,6 @@ robo_hopper = Game(env_name='RoboschoolHopper-v1',
   activation='passthru',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['robo_hopper'] = robo_hopper
