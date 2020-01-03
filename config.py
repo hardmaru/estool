@@ -24,6 +24,7 @@ bullet_cartpole = Game(env_name='CartPoleContinuousBulletEnv-v0',
   activation='tanh',
   noise_bias=0.0,
   output_noise=[False, False, True],
+  rnn_mode=False,
 )
 games['bullet_cartpole'] = bullet_cartpole
 
