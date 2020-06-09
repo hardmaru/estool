@@ -4,6 +4,18 @@ Game = namedtuple('Game', ['env_name', 'time_factor', 'input_size', 'output_size
 
 games = {}
 
+slimevolley = Game(env_name='SlimeVolley',
+  input_size=12,
+  output_size=3,
+  time_factor=0,
+  layers=[20, 20],
+  activation='tanh',
+  noise_bias=0.0,
+  output_noise=[False, False, False],
+  rnn_mode=False,
+)
+games['slimevolley'] = slimevolley
+
 cartpole_swingup = Game(env_name='CartPoleSwingUp',
   input_size=5,
   output_size=1,

@@ -110,7 +110,7 @@ class RNNModel:
     self.env = make_env(self.env_name, seed=seed, render_mode=render_mode)
 
   def get_action(self, real_obs):
-    obs = real_obs.reshape(1, 3)
+    obs = real_obs.reshape(1, self.input_size)
 
     # update rnn:
     #update_obs = np.concatenate([obs, action], axis=1)

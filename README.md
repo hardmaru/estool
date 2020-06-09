@@ -116,6 +116,26 @@ If you haven't bothered to run the previous training command, you can load the p
 python model.py cartpole_swingup zoo/cartpole_swingup.cma.json
 ```
 
+### Self-Contained Slime Volleyball Gym Environment
+
+<center>
+<img src="https://otoro.net/img/slimegym/state.gif" width="100%"/><br/>
+</center>
+
+Here is an example for training [slime volleyball gym](https://github.com/hardmaru/slimevolleygym) environment:
+
+Training command:
+
+```
+python train.py slimevolley -n 8 -e 8 -t 4 --sigma_init 0.5
+```
+
+Pre-trained model:
+
+```
+python model.py slimevolley zoo/slimevolley.cma.64.96.best.json
+```
+
 ### PyBullet Envs
 
 <center>

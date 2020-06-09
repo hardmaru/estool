@@ -293,7 +293,7 @@ def main():
     filename = sys.argv[2]
     print("filename", filename)
 
-  the_seed = 0
+  the_seed = 721
   if len(sys.argv) > 3:
     the_seed = int(sys.argv[3])
     print("seed", the_seed)
@@ -312,7 +312,7 @@ def main():
   if final_mode:
     rewards = []
 
-    for i in range(100):
+    for i in range(1000):
       reward, steps_taken = simulate(model, train_mode=False, render_mode=False, num_episode=1, seed=the_seed+i)
       print(i, reward)
       rewards.append(reward[0])
