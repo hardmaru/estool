@@ -7,7 +7,7 @@ idna==2.9
 mpi4py==3.0.3
 numpy==1.18.5
 opencv-python==4.2.0.34
-pybullet==1.6.3
+pybullet==2.0.0
 pyglet==1.5.5
 requests==2.23.0
 six==1.15.0
