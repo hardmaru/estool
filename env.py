@@ -54,6 +54,8 @@ def make_env(env_name, seed=-1, render_mode=False):
   else:
     if env_name.startswith("Roboschool"):
       import roboschool
+    if "Bullet" in env_name:
+      import pybullet_envs
     env = gym.make(env_name)
     if render_mode and not env_name.startswith("Roboschool"):
       env.render("human")
