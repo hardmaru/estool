@@ -177,11 +177,11 @@ games['bullet_humanoid'] = bullet_humanoid
 bullet_ant = Game(env_name='AntBulletEnv-v0',
   input_size=28,
   output_size=8,
-  layers=[64, 32],
+  layers=[32, 16],
   time_factor=1000,
   activation='tanh',
   noise_bias=0.0,
-  output_noise=[False, False, True],
+  output_noise=[False, False, False],
   rnn_mode=False,
 )
 games['bullet_ant'] = bullet_ant
