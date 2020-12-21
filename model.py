@@ -13,8 +13,8 @@ from gym.wrappers import Monitor
 
 from nn import sigmoid, relu, passthru, softmax, sample, RNNModel
 
-final_mode = True
-render_mode = False
+final_mode = False
+render_mode = True
 RENDER_DELAY = False
 record_video = False
 MEAN_MODE = False
