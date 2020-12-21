@@ -177,6 +177,18 @@ games['bullet_humanoid'] = bullet_humanoid
 bullet_ant = Game(env_name='AntBulletEnv-v0',
   input_size=28,
   output_size=8,
+  layers=[64, 32],
+  time_factor=1000,
+  activation='tanh',
+  noise_bias=0.0,
+  output_noise=[False, False, True],
+  rnn_mode=False,
+)
+games['bullet_ant'] = bullet_ant
+
+bullet_ant_deterministic = Game(env_name='AntBulletEnv-v0',
+  input_size=28,
+  output_size=8,
   layers=[32, 16],
   time_factor=1000,
   activation='tanh',
@@ -184,7 +196,19 @@ bullet_ant = Game(env_name='AntBulletEnv-v0',
   output_noise=[False, False, False],
   rnn_mode=False,
 )
-games['bullet_ant'] = bullet_ant
+games['bullet_ant_deterministic'] = bullet_ant_deterministic
+
+bullet_ant_tiny = Game(env_name='AntBulletEnv-v0',
+  input_size=28,
+  output_size=8,
+  layers=[16, 0],
+  time_factor=1000,
+  activation='tanh',
+  noise_bias=0.0,
+  output_noise=[False, False, True],
+  rnn_mode=False,
+)
+games['bullet_ant_tiny'] = bullet_ant_tiny
 
 bullet_walker = Game(env_name='Walker2DBulletEnv-v0',
   input_size=22,
