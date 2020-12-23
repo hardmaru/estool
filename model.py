@@ -13,8 +13,8 @@ from gym.wrappers import Monitor
 
 from nn import sigmoid, relu, passthru, softmax, sample, RNNModel
 
-final_mode = False
-render_mode = True
+final_mode = True
+render_mode = False
 RENDER_DELAY = False
 record_video = False
 MEAN_MODE = False
@@ -244,6 +244,9 @@ def simulate(model, train_mode=False, render_mode=True, num_episode=5, seed=-1, 
 
       prev_obs = obs
 
+      #noise = np.random.randn(len(action))
+      #action += noise
+
       obs, reward, done, info = model.env.step(action)
 
       if dct_compress_mode:
@@ -306,7 +309,7 @@ def main():
   if use_model:
     model.load_model(filename)
   else:
-    params = model.get_random_model_params(stdev=0.1)
+    params = model.get_random_model_params(stdev=1.0)
     model.set_model_params(params)
 
   if final_mode:

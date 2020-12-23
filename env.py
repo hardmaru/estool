@@ -51,6 +51,13 @@ def make_env(env_name, seed=-1, render_mode=False):
     import pybullet_envs.bullet.kukaGymEnv as kukaGymEnv
     print("bullet_kuka_grasping started")
     env = kukaGymEnv.KukaGymEnv(renders=render_mode,isDiscrete=False)
+  elif (env_name.startswith("NoDeathAntBullet")):
+    print("no death bullet ant.")
+    import pybullet_envs
+    from custom_envs.custom_wrapper import NoDeath
+    env = NoDeath(gym.make("AntBulletEnv-v0"))
+    if render_mode and not env_name.startswith("Roboschool"):
+      env.render("human")
   else:
     if env_name.startswith("Roboschool"):
       import roboschool

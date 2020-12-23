@@ -210,6 +210,18 @@ bullet_ant_tiny = Game(env_name='AntBulletEnv-v0',
 )
 games['bullet_ant_tiny'] = bullet_ant_tiny
 
+bullet_ant_custom = Game(env_name='NoDeathAntBulletEnv-v0',
+  input_size=28,
+  output_size=8,
+  layers=[16, 0],
+  time_factor=0,
+  activation='tanh',
+  noise_bias=0.0,
+  output_noise=[False, False, False],
+  rnn_mode=False,
+)
+games['bullet_ant_custom'] = bullet_ant_custom
+
 bullet_walker = Game(env_name='Walker2DBulletEnv-v0',
   input_size=22,
   output_size=6,
