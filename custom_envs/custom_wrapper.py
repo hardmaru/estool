@@ -23,7 +23,8 @@ class NoDeath(gym.Wrapper):
     self.t += 1
     obs, reward, virtual_done, info = self.env.step(action)
     if DISTANCE_REWARD_MODE:
-      reward = self.env.rewards[1] # progress (distance).
+      rewards = self.env.rewards # progress (distance).
+      rewards[1] *= 10
     done = False
     if self.t >= self.t_max:
       done = True
