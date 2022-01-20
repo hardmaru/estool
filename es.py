@@ -112,11 +112,11 @@ class CMAES:
     return self.solutions
 
   def tell(self, reward_table_result):
-    reward_table = -np.array(reward_table_result)
+    reward_table = np.array(reward_table_result)
     if self.weight_decay > 0:
       l2_decay = compute_weight_decay(self.weight_decay, self.solutions)
       reward_table += l2_decay
-    self.es.tell(self.solutions, (reward_table).tolist()) # convert minimizer to maximizer.
+    self.es.tell(self.solutions, (-reward_table).tolist()) # convert minimizer to maximizer.
 
   def current_param(self):
     return self.es.result[5] # mean solution, presumably better with noise
