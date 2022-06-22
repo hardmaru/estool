@@ -5,7 +5,7 @@ estool==1.0
 gym==0.9.4
 idna==2.9
 mpi4py==3.0.3
-numpy==1.18.5
+numpy==1.22.0
 opencv-python==4.2.0.34
 pybullet==2.0.0
 pyglet==1.5.5
