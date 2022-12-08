@@ -1,4 +1,4 @@
-certifi==2020.4.5.2
+certifi==2022.12.7
 chardet==3.0.4
 cma==2.2.0
 estool==1.0
